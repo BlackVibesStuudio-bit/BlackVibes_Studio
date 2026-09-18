@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arcade — BlackVibes Studio</title>
+<meta name="description" content="Three bite-sized browser music games from BlackVibes Studio — Beat Catcher, Sound Memory, Groove Box.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@600;700;800&family=Permanent+Marker&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
+<noscript>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@600;700;800&family=Permanent+Marker&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</noscript>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="preloader" id="preloader">
+  <div class="pl-inner">
+    <img class="pl-logo-img" src="assets/logo.png" alt="BlackVibes Studio">
+    <div class="pl-sub">STUDIO</div>
+    <div class="pl-eq"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div id="plPct">0%</div>
+  </div>
+</div>
+
+<div class="scroll-progress" id="progress"></div>
+<div class="cursor-dot" id="cDot"></div>
+<div class="cursor-ring" id="cRing"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="BlackVibes Studio home">
+      <img class="brand-logo" src="assets/logo.png" alt="BlackVibes Studio logo">
+      <span class="brand-name">BlackVibes<small>STUDIO</small></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="studio.html">Studio</a></li>
+      <li><a href="arcade.html" class="active">Arcade</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn" id="mute-btn" aria-label="Toggle sound"><i class="fa-solid fa-volume-high" id="mute-icon"></i></button>
+      <button class="icon-btn burger" id="burger" aria-label="Open menu"><i class="fa-solid fa-bars" id="burger-icon"></i></button>
+    </div>
+  </div>
+</header>
+
+<nav class="mnav" id="mnav" aria-label="Mobile menu">
+  <a href="index.html"><span class="idx">01</span>Home</a>
+  <a href="music.html"><span class="idx">02</span>Music</a>
+  <a href="studio.html"><span class="idx">03</span>Studio</a>
+  <a href="arcade.html"><span class="idx">04</span>Arcade</a>
+  <a href="about.html"><span class="idx">05</span>About</a>
+  <a href="contact.html"><span class="idx">06</span>Contact</a>
+  <div class="m-foot">Turn the darkness up · Est. 2026</div>
+</nav>
+
+<main>
+<section class="page-hero">
+  <canvas data-bv3d aria-hidden="true"></canvas>
+  <div class="page-hero-inner">
+    <span class="page-kicker">playground</span>
+    <h1 class="page-title">The <em>Arcade</em></h1>
+    <p class="page-desc">Three bite-sized music games. No downloads, no sign-ups — just tap, play and vibe.</p>
+  </div>
+</section>
+
+<section id="arcade">
+  <div class="bg-word">PLAY</div>
+  <div class="wrap" data-reveal>
+    <div class="gtabs">
+      <button class="gtab active" data-game="bc"><i class="fa-solid fa-bullseye"></i> Beat Catcher</button>
+      <button class="gtab" data-game="mem"><i class="fa-solid fa-brain"></i> Sound Memory</button>
+      <button class="gtab" data-game="gb"><i class="fa-solid fa-sliders"></i> Groove Box</button>
+    </div>
+
+    <div class="gpanel active" data-panel="bc">
+      <div class="game-card">
+        <div class="game-head"><h3>Beat Catcher</h3><span class="hint">Catch the notes on the line — 3 misses and the beat drops you.</span></div>
+        <div class="bc-stage">
+          <canvas id="bc-canvas"></canvas>
+          <div class="bc-hud">
+            <div><div class="hud-lbl">SCORE</div><div class="score" id="bc-score">0</div></div>
+            <div class="bc-lives" id="bc-lives"><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i><i class="fa-solid fa-heart"></i></div>
+          </div>
+          <div class="bc-combo" id="bc-combo"></div>
+          <div class="bc-judge" id="bc-judge"></div>
+          <div class="bc-overlay" id="bc-start">
+            <div>
+              <h3 id="bc-start-title">Beat Catcher</h3>
+              <p>Tap the lanes — or smash <b>D&nbsp;F&nbsp;J&nbsp;K</b> — right as notes cross the line. Chain combos for bonus points.</p>
+              <div class="bc-keys"><span>D</span><span>F</span><span>J</span><span>K</span></div>
+              <button class="btn btn-solid" id="bc-start-btn">Drop The Beat</button>
+            </div>
+          </div>
+          <div class="bc-overlay hidden" id="bc-over">
+            <div>
+              <h3>Game Over</h3>
+              <div class="bc-final" id="bc-final">0</div>
+              <p id="bc-fcombo">Max combo ×0</p>
+              <p id="bc-fbest">Best 0</p>
+              <p class="newbest" id="bc-newbest">NEW HIGH SCORE!</p>
+              <button class="btn btn-violet" id="bc-retry-btn">Run It Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gpanel" data-panel="mem">
+      <div class="game-card">
+        <div class="mem-top">
+          <span>Moves <b id="mem-moves">0</b></span>
+          <span>Time <b id="mem-time">0:00</b></span>
+          <span>Best <b id="mem-best">—</b></span>
+          <button class="gb-btn" id="mem-reset"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+        </div>
+        <div class="mem-grid" id="mem-grid"></div>
+        <div class="bc-overlay hidden" id="mem-win">
+          <div>
+            <h3>All Matched!</h3>
+            <p><b id="mem-wtime">0:00</b> · <b id="mem-wmoves">0</b> moves</p>
+            <p id="mem-wbest">Best —</p>
+            <p class="newbest" id="mem-newbest">NEW RECORD!</p>
+            <button class="btn btn-violet" id="mem-again">Play Again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gpanel" data-panel="gb">
+      <div class="game-card">
+        <div class="gb-top">
+          <button class="gb-play" id="gb-play" aria-label="Play / stop loop"><i class="fa-solid fa-play" id="gb-play-icon"></i></button>
+          <button class="gb-btn" id="gb-preset"><i class="fa-solid fa-wand-magic-sparkles"></i> Demo Beat</button>
+          <button class="gb-btn" id="gb-clear"><i class="fa-solid fa-eraser"></i> Clear</button>
+          <div class="gb-tempo">Tempo <input type="range" id="gb-tempo" min="80" max="150" value="112"> <b><span id="gb-bpm">112</span> BPM</b></div>
+        </div>
+        <div class="game-head" style="border-bottom:0;padding-bottom:6px"><span class="hint">Paint a beat, hit play. Six sounds, sixteen steps, infinite grooves.</span></div>
+        <div class="gb-scroll"><div class="gb-grid" id="gb-grid"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/logo.png" alt="BlackVibes Studio logo" style="width:40px;height:40px">
+        <span class="brand-name">BlackVibes<small>STUDIO</small></span>
+      </a>
+      <nav class="foot-links">
+        <a href="music.html">Music</a><a href="studio.html">Studio</a><a href="arcade.html">Arcade</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+      </nav>
+      <div class="foot-note">Turn the darkness up <div class="eq on"><i></i><i></i><i></i><i></i></div></div>
+      <div class="copy">© 2026 BlackVibes Studio. All frequencies reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"><i class="fa-solid fa-check" id="toast-icon"></i><span id="toast-msg"></span></div>
+<button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script src="assets/audio.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/three-bg.js"></script>
+<script src="assets/admin.js"></script>
+<script src="assets/arcade.js"></script>
+</body>
+</html>

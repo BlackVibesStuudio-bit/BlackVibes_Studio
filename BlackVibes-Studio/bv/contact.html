@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — BlackVibes Studio</title>
+<meta name="description" content="Send BlackVibes Studio a message — a track, a question, or just a hello.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@600;700;800&family=Permanent+Marker&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
+<noscript>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@600;700;800&family=Permanent+Marker&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</noscript>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="preloader" id="preloader">
+  <div class="pl-inner">
+    <img class="pl-logo-img" src="assets/logo.png" alt="BlackVibes Studio">
+    <div class="pl-sub">STUDIO</div>
+    <div class="pl-eq"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div id="plPct">0%</div>
+  </div>
+</div>
+
+<div class="scroll-progress" id="progress"></div>
+<div class="cursor-dot" id="cDot"></div>
+<div class="cursor-ring" id="cRing"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html" aria-label="BlackVibes Studio home">
+      <img class="brand-logo" src="assets/logo.png" alt="BlackVibes Studio logo">
+      <span class="brand-name">BlackVibes<small>STUDIO</small></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="studio.html">Studio</a></li>
+      <li><a href="arcade.html">Arcade</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn" id="mute-btn" aria-label="Toggle sound"><i class="fa-solid fa-volume-high" id="mute-icon"></i></button>
+      <button class="icon-btn burger" id="burger" aria-label="Open menu"><i class="fa-solid fa-bars" id="burger-icon"></i></button>
+    </div>
+  </div>
+</header>
+
+<nav class="mnav" id="mnav" aria-label="Mobile menu">
+  <a href="index.html"><span class="idx">01</span>Home</a>
+  <a href="music.html"><span class="idx">02</span>Music</a>
+  <a href="studio.html"><span class="idx">03</span>Studio</a>
+  <a href="arcade.html"><span class="idx">04</span>Arcade</a>
+  <a href="about.html"><span class="idx">05</span>About</a>
+  <a href="contact.html"><span class="idx">06</span>Contact</a>
+  <div class="m-foot">Turn the darkness up · Est. 2026</div>
+</nav>
+
+<main>
+<section class="contact-hero">
+  <canvas data-bv3d data-crystal="1" data-wire="1" aria-hidden="true"></canvas>
+  <div class="page-hero-inner">
+    <span class="page-kicker">say something</span>
+    <h1 class="page-title">Send A <em>Signal</em></h1>
+    <p class="page-desc">A track, a question, a thank-you, a hello from the dark — every message here reaches an actual person at BlackVibes.</p>
+  </div>
+</section>
+
+<section id="contact-form-sec">
+  <div class="bg-word">MIX</div>
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info" data-reveal>
+        <div class="contact-line"><i class="fa-solid fa-envelope"></i><div><b>Email</b><span>hello@blackvibesstudio.com</span></div></div>
+        <div class="contact-line"><i class="fa-solid fa-location-dot"></i><div><b>Studio</b><span>Open worldwide — we work online</span></div></div>
+        <div class="contact-line"><i class="fa-solid fa-clock"></i><div><b>Reply time</b><span>Usually within 2–3 days</span></div></div>
+        <div class="contact-line"><i class="fa-solid fa-music"></i><div><b>Demo drops</b><span>Send us your track — we listen to every one</span></div></div>
+        <div class="socials" style="justify-content:flex-start;margin-top:34px">
+          <a href="#" aria-label="SoundCloud"><i class="fa-brands fa-soundcloud"></i></a>
+          <a href="#" aria-label="Spotify"><i class="fa-brands fa-spotify"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+      <form class="contact-form" id="contactForm" data-reveal novalidate>
+        <div class="field-row">
+          <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" placeholder="Your name" required></div>
+          <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" placeholder="you@email.com" required></div>
+        </div>
+        <div class="field">
+          <label for="cf-subject">What's this about</label>
+          <select id="cf-subject" name="subject">
+            <option>Just saying hi</option>
+            <option>Sending a track</option>
+            <option>Studio booking</option>
+            <option>Press / collab</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field"><label for="cf-message">Message</label><textarea id="cf-message" name="message" placeholder="Tell us what's on your mind..." required></textarea></div>
+        <div class="send-wrap">
+          <button class="btn btn-solid send-btn" id="sendBtn" type="submit"><span id="sendLabel">Send Message</span> <i class="fa-solid fa-paper-plane" id="sendIcon"></i></button>
+        </div>
+      </form>
+    </div>
+
+    <div class="faq-list" data-reveal>
+      <div class="faq-item open">
+        <button class="faq-q">Do I need an account to listen?<i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><p>No. Every drop streams straight from the Music page — no sign-up, no download.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Can I actually upload my own music?<i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><p>Yes — send us your track through this form and we'll help you get it playing alongside the Groove Box tools in the Arcade.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do you take studio bookings?<i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><p>We do. Pick "Studio booking" above and tell us what you're working on — recording, mixing, mastering or sound design.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">How fast will I hear back?<i class="fa-solid fa-plus"></i></button>
+        <div class="faq-a"><p>Usually within 2–3 days. Every message is read by a real person at the studio.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="bg-word">MORE</div>
+  <div class="wrap" style="text-align:center">
+    <span class="kicker" data-reveal>stay in the loop</span>
+    <h2 class="big-brush" data-reveal>Get In The <span class="stroke">Mix</span></h2>
+    <p class="contact-p" data-reveal style="margin:20px auto 0">Drop your email for release alerts, studio stories and secret demos. Zero spam — only frequencies.</p>
+    <form class="nl" id="nl-form" data-reveal novalidate style="margin:34px auto 0">
+      <i class="fa-solid fa-envelope"></i>
+      <input type="email" id="nl-email" placeholder="your@email.com" aria-label="Email address" required>
+      <button type="submit" class="btn btn-solid" id="notifyBtn">Notify Me</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/logo.png" alt="BlackVibes Studio logo" style="width:40px;height:40px">
+        <span class="brand-name">BlackVibes<small>STUDIO</small></span>
+      </a>
+      <nav class="foot-links">
+        <a href="music.html">Music</a><a href="studio.html">Studio</a><a href="arcade.html">Arcade</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+      </nav>
+      <div class="foot-note">Turn the darkness up <div class="eq on"><i></i><i></i><i></i><i></i></div></div>
+      <div class="copy">© 2026 BlackVibes Studio. All frequencies reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- thank you overlay (shared by the contact form and the newsletter form) -->
+<div class="thankyou-overlay" id="tyOverlay">
+  <div class="thankyou-card" id="tyCard">
+    <div class="ty-icon" id="tyIcon"><i class="fa-solid fa-check"></i></div>
+    <h3 id="tyTitle">Message Sent!</h3>
+    <p id="tyText">Your signal made it through the dark. We'll get back to you within 2–3 days — thanks for reaching out to BlackVibes.</p>
+    <button class="btn btn-violet" id="tyClose">Back To The Studio</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="fa-solid fa-check" id="toast-icon"></i><span id="toast-msg"></span></div>
+<button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<!-- hidden delivery target: a plain cross-origin form POST into this iframe
+     always reaches FormSubmit, even in browsers/networks that block the
+     AJAX (fetch) request — used automatically as a fallback below -->
+<iframe name="bvMailFrame" id="bvMailFrame" style="display:none" title="mail delivery" aria-hidden="true"></iframe>
+
+<script src="assets/audio.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/three-bg.js"></script>
+<script src="assets/admin.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  /* Both forms on this page deliver to this inbox via FormSubmit.co — a
+     no-backend form relay. The FIRST message ever sent to a new address
+     triggers a one-time "activate this inbox" email from FormSubmit that
+     luciferlucky41@gmail.com must click; every submission after that is
+     delivered straight to the inbox automatically. */
+  const RECEIVER_EMAIL='luciferlucky41@gmail.com';
+  const FORM_ENDPOINT_AJAX='https://formsubmit.co/ajax/'+RECEIVER_EMAIL;
+  const FORM_ENDPOINT_CLASSIC='https://formsubmit.co/'+RECEIVER_EMAIL;
+
+  async function deliverViaAjax(payload){
+    const res=await fetch(FORM_ENDPOINT_AJAX,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(Object.assign({_captcha:'false',_template:'table'},payload))
+    });
+    if(!res.ok) throw new Error('formsubmit responded '+res.status);
+    const data=await res.json().catch(()=>null);
+    console.log('BlackVibes: formsubmit ajax response',data);
+    return true;
+  }
+
+  /* fallback: a classic cross-origin <form> POST into a hidden iframe.
+     This is exactly what plain HTML forms have always done — it isn't
+     subject to fetch/CORS restrictions at all, so it works even when the
+     AJAX call above is blocked by a browser, extension or network. We
+     can't read the cross-origin response, so we resolve once the iframe
+     finishes loading (or after a safety timeout either way). */
+  function deliverViaIframe(payload){
+    return new Promise(resolve=>{
+      const iframe=$('#bvMailFrame');
+      if(!iframe){ resolve(false); return; }
+      let settled=false;
+      const finish=ok=>{ if(settled)return; settled=true; iframe.removeEventListener('load',onLoad); resolve(ok); };
+      const onLoad=()=>finish(true);
+      iframe.addEventListener('load',onLoad);
+
+      const form=document.createElement('form');
+      form.action=FORM_ENDPOINT_CLASSIC;
+      form.method='POST';
+      form.target='bvMailFrame';
+      form.style.display='none';
+      const fields=Object.assign({_captcha:'false',_template:'table'},payload);
+      Object.keys(fields).forEach(k=>{
+        const inp=document.createElement('input');
+        inp.type='hidden'; inp.name=k; inp.value=fields[k];
+        form.appendChild(inp);
+      });
+      document.body.appendChild(form);
+      form.submit();
+      setTimeout(()=>form.remove(),4000);
+      setTimeout(()=>finish(true),4000); // safety net if the load event never fires
+    });
+  }
+
+  async function deliver(payload){
+    try{
+      return await deliverViaAjax(payload);
+    }catch(err){
+      console.warn('BlackVibes: ajax delivery failed, falling back to form POST —',err);
+      try{ return await deliverViaIframe(payload); }
+      catch(err2){ console.warn('BlackVibes: iframe delivery also failed —',err2); return false; }
+    }
+  }
+
+  /* ---------- shared paper-rocket launch + thank-you overlay ---------- */
+  function launchRocket(btn, payload, opts){
+    AE.resume();
+    btn.setAttribute('disabled','disabled');
+    const deliverPromise=deliver(payload);
+
+    const r=btn.getBoundingClientRect();
+    const startX=r.left+r.width*.82, startY=r.top+r.height/2;
+    const endX=innerWidth*.86, endY=innerHeight*.08;
+    const cpX=(startX+endX)/2+innerWidth*.08, cpY=Math.min(startY,endY)-140;
+
+    const rocket=document.createElement('i');
+    rocket.className='fa-solid fa-paper-plane launch-icon';
+    document.body.appendChild(rocket);
+
+    AE.whoosh(AE.t(),.35);
+    if(window.bvPulse) bvPulse(.6);
+
+    const dur=1200; const t0=performance.now();
+    let lastTrail=0;
+    function bezier(t){
+      const x=(1-t)*(1-t)*startX+2*(1-t)*t*cpX+t*t*endX;
+      const y=(1-t)*(1-t)*startY+2*(1-t)*t*cpY+t*t*endY;
+      return {x,y};
+    }
+    function frame(now){
+      const p=clamp((now-t0)/dur,0,1);
+      const pos=bezier(p);
+      const ahead=bezier(Math.min(1,p+.02));
+      const angle=Math.atan2(ahead.y-pos.y,ahead.x-pos.x)*180/Math.PI;
+      rocket.style.opacity=p<0.94?1:(1-(p-0.94)/0.06);
+      rocket.style.transform=`translate(${pos.x}px,${pos.y}px) translate(-50%,-50%) rotate(${angle}deg) scale(${1+p*.4})`;
+      if(now-lastTrail>28){ lastTrail=now; spawnTrail(pos.x,pos.y); }
+      if(p<1){ requestAnimationFrame(frame); return; }
+      rocket.remove();
+      /* the flight always finishes for the visual payoff; once the network
+         call resolves too we know whether to say "sent" or to soften the
+         message rather than falsely promise delivery */
+      deliverPromise.then(ok=>{
+        AE.chime(AE.t(),.28);
+        showThankYou(opts, ok);
+        spawnConfetti();
+        btn.removeAttribute('disabled');
+      });
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function spawnTrail(x,y){
+    const d=document.createElement('div'); d.className='trail';
+    d.style.left=(x-3)+'px'; d.style.top=(y-3)+'px';
+    document.body.appendChild(d);
+    setTimeout(()=>d.remove(),650);
+  }
+
+  function spawnConfetti(){
+    const colors=['#9b6bff','#c9b0ff','#ffffff','#5b5b64'];
+    const card=$('#tyCard');
+    for(let i=0;i<26;i++){
+      const c=document.createElement('div'); c.className='confetti';
+      c.style.left=(20+Math.random()*260)+'px';
+      c.style.background=colors[i%colors.length];
+      c.style.animationDuration=(1+Math.random()*1)+'s';
+      c.style.animationDelay=(Math.random()*.3)+'s';
+      card.appendChild(c);
+      setTimeout(()=>c.remove(),2400);
+    }
+  }
+
+  let resetForm=null;
+  function showThankYou(opts, delivered){
+    const icon=$('#tyIcon');
+    icon.innerHTML=delivered?'<i class="fa-solid fa-check"></i>':'<i class="fa-solid fa-triangle-exclamation"></i>';
+    $('#tyTitle').textContent=delivered?opts.title:'Almost There';
+    $('#tyText').textContent=delivered?opts.text:
+      `The rocket flew, but the signal got lost on a slow connection. Please try again, or email us directly at ${RECEIVER_EMAIL}.`;
+    resetForm=opts.form;
+    /* restart the icon's pop animation each time (it only auto-plays once, on page load) */
+    icon.style.animation='none'; void icon.offsetWidth; icon.style.animation='';
+    $('#tyOverlay').classList.add('show');
+    document.body.style.overflow='hidden';
+  }
+  function hideThankYou(){
+    $('#tyOverlay').classList.remove('show');
+    document.body.style.overflow='';
+    if(resetForm) resetForm.reset();
+  }
+  $('#tyClose').addEventListener('click',hideThankYou);
+  $('#tyOverlay').addEventListener('click',e=>{ if(e.target.id==='tyOverlay') hideThankYou(); });
+
+  /* ---------- contact form ---------- */
+  const form=$('#contactForm'), sendBtn=$('#sendBtn');
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    const payload={
+      _subject:'New message from the BlackVibes contact form',
+      name:$('#cf-name').value.trim(),
+      email:$('#cf-email').value.trim(),
+      topic:$('#cf-subject').value,
+      message:$('#cf-message').value.trim()
+    };
+    launchRocket(sendBtn, payload, {
+      form,
+      title:'Message Sent!',
+      text:"Your signal made it through the dark. We'll get back to you within 2–3 days — thanks for reaching out to BlackVibes."
+    });
+  });
+
+  /* ---------- newsletter / subscribe form ---------- */
+  const nlForm=$('#nl-form'), notifyBtn=$('#notifyBtn');
+  if(nlForm && notifyBtn){
+    nlForm.addEventListener('submit',e=>{
+      e.preventDefault();
+      const emailInp=$('#nl-email',nlForm);
+      const v=emailInp.value.trim();
+      if(!/^\S+@\S+\.\S+$/.test(v)){ toast('Hmm, that email looks off — try again.','fa-triangle-exclamation'); return; }
+      const payload={
+        _subject:'New BlackVibes newsletter signup',
+        email:v
+      };
+      launchRocket(notifyBtn, payload, {
+        form:nlForm,
+        title:'Thanks For Subscribing!',
+        text:"You're officially on the list — release alerts, studio stories and secret demos land in your inbox first."
+      });
+    });
+  }
+});
+</script>
+</body>
+</html>
