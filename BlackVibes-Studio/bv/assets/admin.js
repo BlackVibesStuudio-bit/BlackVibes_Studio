@@ -39,6 +39,18 @@
     return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
   }
 
+  /* Turns a fetch Response into JSON, but fails with a readable message
+     instead of a raw "Unexpected token" crash when the server sends back
+     an HTML error page (e.g. a 404 because /api/upload isn't deployed yet). */
+  async function parseJsonSafe(res){
+    const ct=(res.headers.get('content-type')||'');
+    if(!ct.includes('application/json')){
+      if(res.status===404) throw new Error('Upload endpoint not found (404) — is api/upload.js deployed on Vercel?');
+      throw new Error('Server returned a non-JSON response (status '+res.status+'). Check your Vercel deploy logs.');
+    }
+    return res.json();
+  }
+
   /* ---------- auth ---------- */
   const Admin={
     unlocked: sessionStorage.getItem(LS_UNLOCKED)==='1',
@@ -68,7 +80,7 @@
     async fetchTracks(){
       try{
         const res=await fetch('/api/tracks',{cache:'no-store'});
-        const data=await res.json();
+        const data=await parseJsonSafe(res);
         return Array.isArray(data.tracks)?data.tracks:[];
       }catch(e){ console.warn('fetchTracks failed:',e); return []; }
     },
@@ -93,7 +105,7 @@
 
       try{
         const res=await fetch('/api/upload',{method:'POST', body:fd});
-        const data=await res.json();
+        const data=await parseJsonSafe(res);
         if(!res.ok){
           if(window.toast) toast(data.error||'Upload failed.','fa-triangle-exclamation');
           return {ok:false, error:data.error};
@@ -119,7 +131,7 @@
       fd.append('id', id);
       try{
         const res=await fetch('/api/upload',{method:'POST', body:fd});
-        const data=await res.json();
+        const data=await parseJsonSafe(res);
         if(!res.ok){
           if(window.toast) toast(data.error||'Delete failed.','fa-triangle-exclamation');
           return {ok:false};
