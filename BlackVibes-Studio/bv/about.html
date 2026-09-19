@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — VEERA × BlackVibes Studio</title>
-<meta name="description" content="Meet VEERA, founder of BlackVibes Studio — why this platform exists and what it means to find peace within the darkness.">
+<title>BlackVibes Studio — Turn The Darkness Up</title>
+<meta name="description" content="BlackVibes Studio — independent AI-composed music studio, lyrics written by VEERA. Fresh drops, release dates, reviews and browser music games.">
 <link rel="icon" href="assets/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,11 +38,11 @@
       <span class="brand-name">BlackVibes<small>STUDIO</small></span>
     </a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
       <li><a href="music.html">Music</a></li>
       <li><a href="studio.html">Studio</a></li>
       <li><a href="arcade.html">Arcade</a></li>
-      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-actions">
@@ -63,38 +63,133 @@
 </nav>
 
 <main>
-<section class="page-hero">
-  <canvas data-bv3d aria-hidden="true"></canvas>
-  <div class="page-hero-inner">
-    <span class="page-kicker">the story behind the sound</span>
-    <h1 class="page-title">VEERA <em>×</em> BlackVibes</h1>
-    <p class="page-desc">Why a sanctuary for sound exists — and who built it.</p>
+<section class="hero" id="home">
+  <canvas id="bg3d" aria-hidden="true"></canvas>
+  <span class="hero-side left">Est. 2026 — Independent Records</span>
+  <span class="hero-side right">Turn The Darkness Up</span>
+  <div class="hero-inner">
+    <div id="heroLogoWrap">
+      <img class="hero-logo" src="assets/logo.png" alt="BlackVibes Studio logo">
+    </div>
+    <p class="hero-tag">Where Sound Meets Soul</p>
+    <p class="hero-desc">An independent music studio dropping fresh tracks, release updates and browser games that hit right. Every song is AI-composed and tuned; every lyric is written by hand by <b class="veera-em">VEERA</b>, BlackVibes Studio's creator. Press play — the dark has a beat.</p>
+    <div class="hero-cta">
+      <a href="music.html" class="btn btn-solid"><i class="fa-solid fa-play"></i> Latest Drops</a>
+      <a href="arcade.html" class="btn btn-violet"><i class="fa-solid fa-gamepad"></i> Play The Arcade</a>
+    </div>
+    <p class="hero-hint">( click anywhere for a boom )</p>
+  </div>
+  <div class="hero-bottom">
+    <div class="scroll-cue">SCROLL<span class="line"></span>FEEL IT</div>
   </div>
 </section>
 
-<section id="veera">
-  <div class="bg-word">VEERA</div>
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="m-group">
+      <span class="m-item">Turn The Darkness Up</span><i class="fa-solid fa-compact-disc"></i>
+      <span class="m-item ol">New Drop — "Midnight Circuit"</span><i class="fa-solid fa-bolt"></i>
+      <span class="m-item">Feel The Bass</span><i class="fa-solid fa-compact-disc"></i>
+      <span class="m-item ol">VEERA × BlackVibes</span><i class="fa-solid fa-bolt"></i>
+      <span class="m-item">Where Sound Meets Soul</span><i class="fa-solid fa-compact-disc"></i>
+    </div>
+    <div class="m-group">
+      <span class="m-item">Turn The Darkness Up</span><i class="fa-solid fa-compact-disc"></i>
+      <span class="m-item ol">New Drop — "Midnight Circuit"</span><i class="fa-solid fa-bolt"></i>
+      <span class="m-item">Feel The Bass</span><i class="fa-solid fa-compact-disc"></i>
+      <span class="m-item ol">VEERA × BlackVibes</span><i class="fa-solid fa-bolt"></i>
+      <span class="m-item">Where Sound Meets Soul</span><i class="fa-solid fa-compact-disc"></i>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how">
+  <div class="bg-word">FLOW</div>
   <div class="wrap">
-    <div class="veera-grid">
-      <div class="veera-portrait" data-reveal>
-        <div class="ring"></div>
-        <img src="assets/logo.png" alt="BlackVibes Studio mark">
+    <div class="sec-head" data-reveal>
+      <div><span class="kicker">how it works</span><h2 class="sec-title">Inside The <em>Studio</em></h2></div>
+      <p class="sec-note"><i class="fa-solid fa-circle-info"></i>Every BlackVibes drop follows the same ritual, from a blank page to a track you can stream.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-step" data-reveal><div class="how-num">01</div><h3>Lyrics by VEERA</h3><p>Every song starts as handwritten words — founder VEERA writes each lyric before any sound exists.</p></div>
+      <div class="how-step" data-reveal><div class="how-num">02</div><h3>AI Composes</h3><p>The lyrics are handed to AI tools that compose the melody, instrumentation and vocal performance.</p></div>
+      <div class="how-step" data-reveal><div class="how-num">03</div><h3>Tuned &amp; Mixed</h3><p>Every AI-generated take is tuned, mixed and mastered in-house until it actually shakes the room.</p></div>
+      <div class="how-step" data-reveal><div class="how-num">04</div><h3>Dropped Here</h3><p>The finished track lands on the Music page — stream it, remix it, or upload your own alongside it.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RELEASE CALENDAR ============ -->
+<section id="releases">
+  <div class="bg-word">DATES</div>
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <div><span class="kicker">circle the date</span><h2 class="sec-title">Release <em>Calendar</em></h2></div>
+      <p class="sec-note"><i class="fa-solid fa-calendar-days"></i>What's already out, and what's landing next.</p>
+    </div>
+    <div class="cal-list" id="calList" data-reveal></div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section id="reviews">
+  <div class="bg-word">WORDS</div>
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <div><span class="kicker">what people say</span><h2 class="sec-title">Listener <em>Reviews</em></h2></div>
+      <p class="sec-note"><i class="fa-solid fa-quote-left"></i>A few words from people who've turned the darkness up.</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rev-card" data-reveal>
+        <div class="rev-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="rev-quote">"Midnight Circuit lives in my headphones now. Didn't expect AI vocals to hit this hard, and the lyrics actually mean something."</p>
+        <div class="rev-by"><div class="rev-avatar">PR</div><div><div class="rev-name">Priya R.</div><div class="rev-role">Chennai, IN</div></div></div>
       </div>
-      <div data-reveal>
-        <div class="veera-name">VEERA</div>
-        <div class="veera-title">Founder &amp; Creator, BlackVibes Studio</div>
-        <p class="veera-p">Welcome to <b>Black Vibes</b>, a sanctuary born from the journey of overcoming life's toughest struggles.</p>
-        <p class="veera-p">Founded by <b class="veera-em">Veera</b> after facing failures in studies, career, and relationships, this platform was created to offer a peaceful space for those seeking refuge and relaxation.</p>
-        <p class="veera-p">Here, you aren't just a listener; you can upload your own tracks, play with the music, and find peace within the darkness.</p>
-        <p class="veera-p">Every track is composed and produced with AI, but every lyric is written by hand — because the words are the part of this place that have to come from a real person who's actually been through it.</p>
-        <blockquote class="veera-quote">"Find peace within the darkness."</blockquote>
+      <div class="rev-card" data-reveal>
+        <div class="rev-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+        <p class="rev-quote">"Uploaded my own demo through the Studio tools and it sat right next to BlackVibes originals. Feels like a real community."</p>
+        <div class="rev-by"><div class="rev-avatar">MT</div><div><div class="rev-name">Marcus T.</div><div class="rev-role">Austin, US</div></div></div>
+      </div>
+      <div class="rev-card" data-reveal>
+        <div class="rev-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+        <p class="rev-quote">"Ghost Frequency at 2am with the lights off is a whole experience. VEERA's lyrics are the reason I keep coming back."</p>
+        <div class="rev-by"><div class="rev-avatar">AS</div><div><div class="rev-name">Aiko S.</div><div class="rev-role">Osaka, JP</div></div></div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="pillars" data-reveal>
-      <div class="pillar"><i class="fa-solid fa-cloud-arrow-up"></i><h4>Upload Your Own</h4><p>Share your own tracks and let them sit alongside BlackVibes originals.</p></div>
-      <div class="pillar"><i class="fa-solid fa-sliders"></i><h4>Play With The Music</h4><p>Remix, loop and experiment in the Arcade — the music is yours to touch.</p></div>
-      <div class="pillar"><i class="fa-solid fa-moon"></i><h4>A Space To Rest</h4><p>No pressure, no noise you didn't choose — just a quiet corner turned up loud.</p></div>
+<!-- ============ INSTAGRAM ============ -->
+<section id="reels">
+  <div class="bg-word">INSTA</div>
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <div><span class="kicker">@blackvibes.studio</span><h2 class="sec-title">On <em>Instagram</em></h2></div>
+      <p class="sec-note"><i class="fa-brands fa-instagram"></i>Real posts &amp; reels from our Instagram — studio sessions, drops and behind-the-scenes.</p>
+    </div>
+    <div class="reel-scroll" id="reelScroll" data-reveal></div>
+  </div>
+</section>
+
+<!-- ============ EXPLORE ============ -->
+<section id="explore">
+  <div class="bg-word">MORE</div>
+  <div class="wrap">
+    <div class="sec-head" data-reveal>
+      <div><span class="kicker">find your way around</span><h2 class="sec-title">Explore <em>BlackVibes</em></h2></div>
+    </div>
+    <div class="intro-grid">
+      <a class="intro-card" href="music.html" data-reveal><i class="fa-solid fa-headphones"></i><h3>Music</h3>
+        <p>Stream every drop live in your browser — AI-composed, VEERA-written.</p><span class="go">Press play →</span></a>
+      <a class="intro-card" href="studio.html" data-reveal><i class="fa-solid fa-compact-disc"></i><h3>Studio</h3>
+        <p>The production house behind the sound — services, stats and the manifesto.</p><span class="go">Step inside →</span></a>
+      <a class="intro-card" href="arcade.html" data-reveal><i class="fa-solid fa-gamepad"></i><h3>Arcade</h3>
+        <p>Three bite-sized music games. No sign-up, no downloads.</p><span class="go">Start playing →</span></a>
+      <a class="intro-card" href="about.html" data-reveal><i class="fa-solid fa-pen-nib"></i><h3>About</h3>
+        <p>Meet VEERA × BlackVibes — why this studio exists.</p><span class="go">Read the story →</span></a>
+      <a class="intro-card" href="contact.html" data-reveal><i class="fa-solid fa-paper-plane"></i><h3>Contact</h3>
+        <p>Say hello, send feedback, or ask about uploading your tracks.</p><span class="go">Get in the mix →</span></a>
     </div>
   </div>
 </section>
@@ -123,5 +218,8 @@
 <script src="assets/app.js"></script>
 <script src="assets/three-bg.js"></script>
 <script src="assets/admin.js"></script>
+<script src="assets/tracks-data.js"></script>
+<script src="assets/calendar.js"></script>
+<script src="assets/reels.js"></script>
 </body>
 </html>
