@@ -16,7 +16,7 @@ const todayISO=()=>new Date().toISOString().slice(0,10);
    older saved copy so past localStorage data never breaks on an update */
 function normalize(tr){
   return Object.assign({
-    releaseDate:todayISO(), likes:0, status:'released', type:'synth', cover:null
+    releaseDate:todayISO(), likes:0, status:'released', type:'synth', cover:null, audioUrl:null
   },tr);
 }
 
@@ -71,9 +71,9 @@ const Player={cur:-1,seq:new Sequencer(trackStep),startT:0,dur:1,progTimer:null,
     this.stopAll();
     this.cur=i;
     if(tr.type==='upload'){
-      const url=window.BVAdmin && BVAdmin.sessionAudio[tr.id];
+      const url=tr.audioUrl;
       if(!url){
-        toast("This track's audio needs to be re-attached for this browser session.",'fa-triangle-exclamation');
+        toast("This track's audio file is missing — re-upload it in the editor.",'fa-triangle-exclamation');
         refreshPlayerUI(); return;
       }
       const a=getHtmlAudio();
@@ -255,7 +255,7 @@ function openTrackEditor(id){
     <div class="field"><label>Genre</label><input type="text" id="fGenre" value="${escapeAttr(draft.genre)}" placeholder="e.g. Deep House"></div>
     <div class="field"><label>Release Date</label><input type="date" id="fDate" value="${escapeAttr(draft.releaseDate)}"></div>
     <div class="field">
-      <label>Song File (optional — plays back for this browser tab only)</label>
+      <label>Song File (optional — uploaded and saved for every visitor)</label>
       <div class="dropzone" id="audioDrop">
         <i class="fa-solid fa-file-audio"></i>
         <p id="audioDropLabel">${draft.type==='upload'?'Audio attached — drop a new file to replace it':'Drag & drop an MP3/WAV, or click to browse'}</p>
@@ -294,19 +294,35 @@ function openTrackEditor(id){
       if(!draft.title){ draft.title=file.name.replace(/\.[^.]+$/,''); root.querySelector('#fTitle').value=draft.title; }
     },'audio/');
 
-    root.querySelector('#saveTrackBtn').addEventListener('click',()=>{
+    root.querySelector('#saveTrackBtn').addEventListener('click',async ()=>{
       draft.title=root.querySelector('#fTitle').value.trim()||'Untitled';
       draft.genre=root.querySelector('#fGenre').value.trim()||'Unlabeled';
       draft.releaseDate=root.querySelector('#fDate').value||todayISO();
-      const finish=()=>{ if(editing) Object.assign(editing,draft); else TRACKS.push(draft); persistAndRerender(); };
+      const finish=()=>{ if(editing) Object.assign(editing,draft); else TRACKS.push(draft); persistAndRerender(); close(); };
+
       if(uploadedAudioFile){
-        draft.type='upload';
-        const url=BVAdmin.attachSessionAudio(draft.id,uploadedAudioFile);
-        const probe=new Audio(url);
-        probe.addEventListener('loadedmetadata',()=>{ draft.dur=fmtT(probe.duration||0); finish(); });
-        probe.addEventListener('error',finish);
-      }else finish();
-      close();
+        const saveBtn=root.querySelector('#saveTrackBtn');
+        saveBtn.disabled=true; saveBtn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> Uploading…';
+        try{
+          // measure duration locally (fast, no network) while the real upload happens
+          const probeDur=await new Promise(resolve=>{
+            const probeUrl=URL.createObjectURL(uploadedAudioFile);
+            const probe=new Audio(probeUrl);
+            probe.addEventListener('loadedmetadata',()=>{ URL.revokeObjectURL(probeUrl); resolve(probe.duration||0); });
+            probe.addEventListener('error',()=>{ URL.revokeObjectURL(probeUrl); resolve(0); });
+          });
+          const audioUrl=await BVAdmin.uploadAudioFile(uploadedAudioFile); // real, persistent upload
+          draft.type='upload';
+          draft.audioUrl=audioUrl;
+          draft.dur=fmtT(probeDur);
+          finish();
+        }catch(e){
+          toast(e.message||'Audio upload failed — try again.','fa-triangle-exclamation');
+          saveBtn.disabled=false; saveBtn.innerHTML='<i class="fa-solid fa-check"></i> Save Track';
+        }
+      }else{
+        finish();
+      }
     });
   });
 }
