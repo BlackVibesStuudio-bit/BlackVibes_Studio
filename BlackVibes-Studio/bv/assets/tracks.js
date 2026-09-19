@@ -1,10 +1,9 @@
 /* ==========================================================================
-   BLACKVIBES STUDIO — /api/tracks.js
+   BLACKVIBES STUDIO — api/tracks.js
    Serverless function (Vercel Edge Runtime).
-
-   Public, read-only endpoint. Every visitor's browser calls this on page
-   load to get the current track list (the one your admin panel writes to
-   via /api/upload). No PIN required to read — only to write.
+   Public, read-only. No PIN required — anyone visiting the site needs to
+   be able to load the current track list. Only writes (api/upload.js)
+   require the PIN.
    ========================================================================== */
 
 import { list } from '@vercel/blob';
